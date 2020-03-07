@@ -75,14 +75,14 @@ namespace BalkezesekProject.Repository
 
         public void atlagSulyBekertEvbenPalyaraLeptek()         
         {
-            var bekertevbenLista = balkezesekLista.Where(x => x.elso.Year >= bekertSzam && x.utolso.Year <= bekertSzam);
+            var bekertevbenLista = balkezesekLista.Where(x => bekertSzam >= x.elso.Year  && bekertSzam <= x.utolso.Year);
             Console.WriteLine("Átlag súly {0} -ben pályára léptek: {1:N2}",bekertSzam, bekertevbenLista.Average(x => x.suly)); 
         }
 
         public void atlagSulyBekertEvbenPalyaraLeptek(int bee)
         {
             double sum =0;
-            var bekertevbenLista = balkezesekLista.Where(x => x.elso.Year >= bee && x.utolso.Year <= bee);
+            var bekertevbenLista = balkezesekLista.Where(x => bee >= x.elso.Year && bee <= x.utolso.Year);
             Console.WriteLine("\n\nÁtlag súly {0} -ben pályára léptek: {1:N2}", bee, bekertevbenLista.Average(x => x.suly));
             Console.WriteLine("Elemek száma: "+bekertevbenLista.Count());
             foreach (var item in bekertevbenLista)
